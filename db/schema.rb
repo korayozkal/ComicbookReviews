@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_09_19_005157) do
 
   create_table "comicbooks", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.integer "number"
     t.string "writer"
     t.string "artist"
