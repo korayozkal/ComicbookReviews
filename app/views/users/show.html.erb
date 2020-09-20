@@ -2,4 +2,7 @@
 <br>
 <h2>Display My Comicbooks<h2>
 
-<%=  link_to 'Logout', logout_path, method:"delete"%>
+<%= form_tag("/logout", method: "delete") do %>
+<%= submit_tag("Logout") %>
+<% end %>
+
