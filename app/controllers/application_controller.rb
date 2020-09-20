@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-    #helper_method :current_user, :logged_in
-    #before_action :redirect_if_logged_out
-    #private
+    helper_method :current_user, :logged_in
+    #gives these methods access in the views! 
 
+    #before_action :redirect_if_logged_out
+    
+    private
     def current_user
         @current_user ||= User.find_by(id: session[:user_id])
         #if current_user is already defined equal to current_user if not find the user in the user table
