@@ -1,7 +1,5 @@
-<h1>Welcome <%=@user.username %></h1>
+<h1>Welcome <%= @user.username %></h1>
+<br>
+<h2>Display My Comicbooks<h2>
 
-<h1>Display My Comicbooks<h2>
-
-<%= form_tag("/logout", method: "delete") do %>
-<%= submit_tag("Logout") %>
-<% end %>
+<%=  link_to 'Logout', logout_path, method:"delete"%>
