@@ -1,0 +1,5 @@
+<h1> All Comicbooks </h1>
+
+<% @comicbooks.each do |comicbook| %>
+<p><%= link_to comicbook.title, comicbook_path(comicbook)%> , issue <%= comicbook.number %></p>
+<% end %>
