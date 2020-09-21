@@ -12,10 +12,11 @@ post '/login' => 'sessions#create'           # processes login information
 #logout route
 delete '/logout' => 'sessions#destroy'       
   
-  resources :reviews
+  
   resources :users
   resources :comicbooks
-
+  
+  resources :reviews
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
