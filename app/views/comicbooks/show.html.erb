@@ -6,4 +6,6 @@
 <h2> Writer: <%=@comicbook.writer%></h2>
 <h2> Artist: <%=@comicbook.artist%></h2>
 
+<button type="button"><%= link_to 'Edit', edit_comicbook_path(@comicbook) %> </button>
+<button type="button"><%= link_to 'Delete', @comicbook, method: :delete, data: { confirm: 'Are you sure?' } %></button>
 

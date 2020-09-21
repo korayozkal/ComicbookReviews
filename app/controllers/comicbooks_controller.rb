@@ -1,5 +1,5 @@
 class ComicbooksController < ApplicationController
-    before_action :redirect_if_not_logged_in
+      before_action :redirect_if_not_logged_in
 
     def new
         @comicbook = Comicbook.new
@@ -15,7 +15,7 @@ class ComicbooksController < ApplicationController
            render :new
         end
         
-    end 
+    end
 
     def show
         @comicbook = Comicbook.find(params[:id])
@@ -23,6 +23,34 @@ class ComicbooksController < ApplicationController
    
     def index 
         @comicbooks= Comicbook.all 
+    end 
+
+    def edit #add current_user
+        #binding.pry
+        #@comicbook = Comicbook.find_by_id(params[:id])
+        @comicbook = Comicbook.find(params[:id]) #TRY THIS TOO!
+        #@comicbook = current_user.comicbooks.update(comicbook_params)
+        #redirect_to comicbooks_path if  @comicbook.user != current_user
+    end 
+
+    def update #add current_user
+        @comicbook = Comicbook.find_by_id(params[:id])
+        #redirect_to comicbooks_path if  @comicbook.user != current_user
+        if @comicbook.update(comicbook_params)
+           redirect_to comicbook_path(@comicbook)
+        else
+           render :edit
+        end
+    end 
+
+    def destroy
+        @comicbook = Comicbook.find(params[:id])
+        #if current_user == comicbook.user
+           @comicbook.destroy
+           redirect_to comicbooks_path(@comicbook)
+        #else
+           # redirect_to comicbook_path(@comicbook)
+        #end
     end 
 
 
