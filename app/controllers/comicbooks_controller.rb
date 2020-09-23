@@ -7,8 +7,8 @@ class ComicbooksController < ApplicationController
 
     def create
         #binding.pry
-        #@comicbook = Comicbook.new(comicbook_params)
-        @comicbook = current_user.comicbooks.build(comicbook_params)
+        @comicbook = Comicbook.new(comicbook_params)
+        #@comicbook = current_user.comicbooks.build(comicbook_params)
         if @comicbook.save
            redirect_to @comicbook
         else

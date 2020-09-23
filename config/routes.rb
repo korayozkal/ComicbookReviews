@@ -13,12 +13,13 @@ post '/login' => 'sessions#create'           # processes login information
 delete '/logout' => 'sessions#destroy'       
   
   resources :users
-  resources :comicbooks
-  resources :reviews
-  #resources :comicbooks do
-  #resources :reviews, shallow: true
+  #resources :comicbooks
+  #resources :reviews
+  resources :comicbooks do
+    resources :reviews, shallow: true
   end
-end
+
+end 
 
 # https://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 #Generates shallow routes for nested resource(s). 

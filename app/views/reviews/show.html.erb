@@ -1,0 +1,16 @@
+
+<h1>New Review for <%= @review.comicbook.title%>, issue <%= @review.comicbook.number%></h1>
+
+<h2>RATING for this Comic book is: <%= @review.rating%> </h2>
+<br>
+<h2>COMMENTS<h2>
+<h2><%= @review.comment%><h2>
+<br>
+<h2>Reviewed by the user: <%= @review.user.username%><h2>
+
+<br>
+<br>
+<button type="button"><%= link_to 'Edit', edit_review_path(@review) %> </button>
+<button type="button"><%= link_to 'Delete', @review, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+
+

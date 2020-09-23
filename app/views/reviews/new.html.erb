@@ -1,0 +1,32 @@
+<h1>New Review for <%= @comicbook.title%>, issue <%= @comicbook.number%></h1>
+<%= form_for [@comicbook, @review] do |f| %>
+
+
+<% if @review.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@review.errors.count, "error") %> prohibited this @review from being saved:</h2>
+
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<br>
+<div class="field">
+  <%= f.label :rating %>
+  <%= f.select(:rating, [1,2,3,4,5], :prompt => 'Rate') %>
+</div>
+<br>
+<div class="field">
+  <%= f.label :comment %>
+  <br>
+  <br>
+  <%= f.text_area :comment, size: "30x5"  %>
+</div>
+<br>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
