@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :reviewed_comicbooks, -> {distinct}, through: :reviews, source: :comicbook  
     
     has_secure_password 
-    validates_presence_of :username, :email, uniquness: true 
+    validates :username, presence: true, uniqueness: true 
+    validates :email, presence: true, uniqueness: true 
 
 end 

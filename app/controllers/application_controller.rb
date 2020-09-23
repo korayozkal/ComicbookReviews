@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in
     #gives these methods access in the views! 
-    #before_action :redirect_if_logged_out
-    
+    before_action :redirect_if_not_logged_in
+
     private
     def current_user
         @current_user ||= User.find_by(id: session[:user_id])
@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     def redirect_if_not_logged_in
         flash[:message] = "Please Login!"
         redirect_to '/' if !logged_in
+
         #unless logged_in
         #redirect_to root_path, notice: "Please login" #check if the notice working
         #or to keep it simple I can  redirect_to '/' if !logged_in
