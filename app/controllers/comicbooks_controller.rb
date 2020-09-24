@@ -6,7 +6,6 @@ class ComicbooksController < ApplicationController
     end
 
     def create
-        
         @comicbook = current_user.comicbooks.build(comicbook_params)
         if @comicbook.save
            redirect_to @comicbook#workingcode
@@ -30,12 +29,11 @@ class ComicbooksController < ApplicationController
         #@comicbook = Comicbook.find(params[:id]) #test code
         redirect_to comicbooks_path if  @comicbook.user != current_user
         #@comicbook = current_user.comicbooks.update(comicbook_params)
-        redirect_to comicbooks_path if @comicbook.user != current_user
     end 
 
     def update #add current_user
         @comicbook = Comicbook.find_by_id(params[:id])
-        redirect_to comicbooks_path if  @comicbook.user != current_user
+        redirect_to comicbooks_path if @comicbook.user != current_user
         #if @comicbook.update(comicbook_params)#test version
         if @comicbook = current_user.comicbooks.update(comicbook_params)
            redirect_to comicbook_path(@comicbook)
@@ -46,23 +44,21 @@ class ComicbooksController < ApplicationController
 
     def destroy
         @comicbook = Comicbook.find(params[:id])#workingcode
-        #if current_user == comicbook.user
-           @comicbook.destroy#workingcode
-           redirect_to comicbooks_path(@comicbook)#workingcode
-        #else
-           # redirect_to comicbook_path(@comicbook)
-        #end
+        redirect_to comicbooks_path if  @comicbook.user != current_user
+     if @comicbook.destroy#workingcode
+        redirect_to comicbooks_path(@comicbook)#workingcode
+     
+     else
+        redirect_to comicbook_path(@comicbook)
+     end 
     end 
-
 
     private
     def comicbook_params
         params.require(:comicbook).permit(:title, :number, :writer, :artist, :publisher)
     end
-     
+
     #def set_book
     #@comicbook = Comicbook.find_by_id(params[:id])
     #end 
-
-
 end
