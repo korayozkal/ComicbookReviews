@@ -5,21 +5,25 @@ root "sessions#home"
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
 
-#login route
+#my login route
 get '/login' => 'sessions#new'               # displays login page 
 post '/login' => 'sessions#create'           # processes login information
 
-#logout route
+ #omniauth route we need when google sends back the request
+get "/auth/:google_oauth2/callback" => 'sessions#google'
+ 
+#my logout route
 delete '/logout' => 'sessions#destroy'       
   
   resources :users
-  #resources :comicbooks
-  #resources :reviews
+  #nested
   resources :comicbooks do
     resources :reviews, shallow: true
   end
 
 end 
+
+#NOTES TO MYSELF 
 
 # https://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 #Generates shallow routes for nested resource(s). 
