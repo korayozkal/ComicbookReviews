@@ -26,8 +26,9 @@ class ComicbooksController < ApplicationController
 
     def edit 
         #binding.pry
-        #@comicbook = Comicbook.find_by_id(params[:id])
-        @comicbook = Comicbook.find(params[:id]) #workingcode
+        @comicbook = Comicbook.find_by_id(params[:id])
+        #@comicbook = Comicbook.find(params[:id]) #test code
+        redirect_to comicbooks_path if  @comicbook.user != current_user
         #@comicbook = current_user.comicbooks.update(comicbook_params)
         redirect_to comicbooks_path if @comicbook.user != current_user
     end 
