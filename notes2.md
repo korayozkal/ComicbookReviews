@@ -183,3 +183,13 @@ end
 <% end %>
 
  
+
+
+ <% if @comicbook.user == current_user %>
+<%= link_to 'Review this Comicbook', new_comicbook_review_path(@comicbook) %>
+<br>
+<br>
+
+<button type="button"><%= link_to 'Edit', edit_comicbook_path(@comicbook) %> </button>
+<button type="button"><%= link_to 'Delete', @comicbook, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<% end %>

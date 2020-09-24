@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in
-    #gives these methods access in the views! 
+    helper_method :current_user, :logged_in   #gives these methods access in the views! 
     before_action :redirect_if_not_logged_in
 
     private

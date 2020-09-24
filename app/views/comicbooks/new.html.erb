@@ -1,4 +1,6 @@
 <h1>New Comicbook</h1>
+<%= render partial: "layouts/errors", locals: {object: @comicbook} %>
+
 <%= form_for(@comicbook) do |form| %>
 <br>
 <div class="field">

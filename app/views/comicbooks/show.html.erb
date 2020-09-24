@@ -1,14 +1,17 @@
-<h1> -My New Comicbook- </h1>
+<h1> -Comicbook- </h1>
 
 <h2> Title: <%=@comicbook.title%></h2>
 <h2> Issue: <%=@comicbook.number%></h2>
 <h2> Publisher: <%=@comicbook.title%></h2>
 <h2> Writer: <%=@comicbook.writer%></h2>
 <h2> Artist: <%=@comicbook.artist%></h2>
+<h2>This book belongs to <%= @comicbook.user.username %> </h1>
 
+
+<% if @comicbook.user == current_user %>
 <%= link_to 'Review this Comicbook', new_comicbook_review_path(@comicbook) %>
 <br>
 <br>
 <button type="button"><%= link_to 'Edit', edit_comicbook_path(@comicbook) %> </button>
 <button type="button"><%= link_to 'Delete', @comicbook, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-
+<% end %>

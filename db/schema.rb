@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_09_19_005157) do
     t.string "writer"
     t.string "artist"
     t.string "publisher"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -6,6 +6,7 @@ class CreateComicbooks < ActiveRecord::Migration[6.0]
       t.string :writer
       t.string :artist
       t.string :publisher
+      t.integer :user_id
 
       t.timestamps
     end
