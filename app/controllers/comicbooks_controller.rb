@@ -7,10 +7,8 @@ class ComicbooksController < ApplicationController
 
     def create
         
-        #@comicbook = Comicbook.new(comicbook_params)#working code
-        #@comicbook.user = current_user
         @comicbook = current_user.comicbooks.build(comicbook_params)
-        if @comicbook.save#workingcode
+        if @comicbook.save
            redirect_to @comicbook#workingcode
         else
            render :new
@@ -35,9 +33,10 @@ class ComicbooksController < ApplicationController
     end 
 
     def update #add current_user
-        @comicbook = Comicbook.find_by_id(params[:id])#workingcode
-        #redirect_to comicbooks_path if  @comicbook.user != current_user
-        if @comicbook.update(comicbook_params)#workingcode
+        @comicbook = Comicbook.find_by_id(params[:id])
+        redirect_to comicbooks_path if  @comicbook.user != current_user
+        #if @comicbook.update(comicbook_params)#test version
+        if @comicbook = current_user.comicbooks.update(comicbook_params)
            redirect_to comicbook_path(@comicbook)
         else
            render :edit
