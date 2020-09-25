@@ -1,0 +1,34 @@
+<%= form_for(@comicbook, local: true) do |form| %>
+<%= render partial: "layouts/errors", locals: {object: @comicbook} %>
+
+<br>
+<div class="field">
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :number %>
+  <%= form.number_field :number%>
+</div>
+<br>
+<div class="field">
+  <%= form.label :publisher %>
+  <%= form.text_field :publisher %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :writer %>
+  <%= form.text_field :writer %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :artist %>
+  <%= form.text_field :artist %>
+</div>
+<br>
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>

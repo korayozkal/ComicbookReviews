@@ -1,12 +1,10 @@
  
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  #before_action :set_comicbook, only: [:index, :new]
-  #before_action :set_review, only: [:show, :edit, :update]
+  before_action :set_comicbook, only: [:new, :index, :show, :edit]
+  before_action :set_review, only: [:show, :edit, :destroy]
 
   def new
-    @comicbook = Comicbook.find_by_id(params[:comicbook_id])
-    #@review = Review.new
     @review = @comicbook.reviews.build
   end
 
@@ -14,35 +12,24 @@ class ReviewsController < ApplicationController
     @comicbook = Comicbook.find(params[:comicbook_id])
     @review = current_user.reviews.build(review_params)
     @review.comicbook = @comicbook
-    if @review.save
-    redirect_to @review
-    #redirect_to comicbook_reviews_path(@review.comicbook)
-    else
-     render :new
-    end
+      if @review.save
+         redirect_to @review
+         #redirect_to comicbook_reviews_path(@review.comicbook)
+      else
+         render :new
+      end
   end
 
   def index 
-    @comicbook = Comicbook.find_by_id(params[:comicbook_id])
     @reviews = @comicbook.reviews
-    #@review.comicbook = @comicbook# checking this one 
   end
   
   
   def show
-    @comicbook = Comicbook.find_by_id(params[:comicbook_id])#
-    @review = Review.find_by_id(params[:id])
     #redirect_to comicbook_reviews_path(@review.comicbook) if !@review.comicbook
   end
 
- 
-
   def edit
-    @comicbook = Comicbook.find_by_id(params[:comicbook_id])
-    @review = Review.find_by_id(params[:id])
-    #@review = Review.find_by(params[:id]) 
-    #@review = @comicbook.reviews.find(params[:id])
-
   end
 
   def update
@@ -55,15 +42,20 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    #@comicbook = Comicbook.find_by_id(params[:comicbook_id])
-    @review = Review.find_by_id(params[:id])
-    #if current_user == comicbook.user
     @review.destroy
        redirect_to comicbook_path
-     #else 
+    
 end 
 
   private
+  def set_comicbook
+    @comicbook = Comicbook.find_by_id(params[:comicbook_id])
+  end
+
+  def set_review
+    @review = Review.find_by_id(params[:id])
+  end
+
   def review_params
     params.require(:review).permit(:rating, :comment)
   end 
