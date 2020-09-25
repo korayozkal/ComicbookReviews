@@ -24,7 +24,7 @@ class ComicbooksController < ApplicationController
   end
  
   def index 
-      @comicbooks= Comicbook.all #workingcode
+      @comicbooks= Comicbook.all 
   end 
 
   def edit #add current_user
