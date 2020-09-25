@@ -25,6 +25,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
