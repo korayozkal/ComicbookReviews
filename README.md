@@ -1,13 +1,13 @@
 # README
 
-# ComicbookReviews App
-This is a simple Rails app built with Ruby on Rails that will allow you to keep track of a comicbook library and reviews.
+# Welcome to Inner Geek Comicbook App!
+This is a simple Rails app built with Ruby on Rails. At its core, Inner Geek Comicbook Web App features a cataloging system that you can use it as a database to list your comicbook archieve. 
 
 User will have the ability to:
 Create their own account, sign in and out of their own account.
-Create a comicbook library and related reviews.
-Add, edit or delete comicbooks created only by the same user.
-Add, edit or delete ratings and reviews
+Add/Edit New or Old Comic Listings created only by the same user
+Add Creator Credits to Issues
+Add/Edit/Delete Notes
 
 # Installation
 Fork the repository and clone it
