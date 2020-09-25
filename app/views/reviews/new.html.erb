@@ -1,7 +1,6 @@
 <h1>New Review for <%= @comicbook.title%>, issue <%= @comicbook.number%></h1>
+
 <%= form_for [@comicbook, @review] do |f| %>
-
-
 <% if @review.errors.any? %>
 <div id="error_explanation">
 <h2><%= pluralize(@review.errors.count, "error") %> prohibited this @review from being saved:</h2>

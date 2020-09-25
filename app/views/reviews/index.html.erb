@@ -1,7 +1,11 @@
 
 <h1>Reviews</h1>
-<%= @comicbook.title%>, issue: <%= @comicbook.number%>
-<% @reviews.each do |r| %>
-<p>Reviewed by <%= r.user.username %> Rating: <%= r.rating %></p>
+<h2><%= @comicbook.title%>, issue: <%= @comicbook.number%><h2>
+
+<h3><% @reviews.each do |r| %></h3>
+<p>Reviewed by <%= r.user.username %>,  Rating: <%= r.rating %> </p>
 <p><%= r.comment%></p>
+<p>--------------------------------------</p>
 <% end %>
+
+

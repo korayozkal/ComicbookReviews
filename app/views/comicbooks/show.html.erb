@@ -9,7 +9,9 @@
 
 
 <% if @comicbook.user == current_user %>
-<%= link_to 'Review this Comicbook', new_comicbook_review_path(@comicbook) %>
+<%= link_to 'My Notes/Reviews', comicbook_reviews_path(@comicbook) %>
+<br>
+<%= link_to 'Add a New Note/Review', new_comicbook_review_path(@comicbook) %>
 <br>
 <br>
 <button type="button"><%= link_to 'Edit', edit_comicbook_path(@comicbook) %> </button>
