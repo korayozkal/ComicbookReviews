@@ -1,7 +1,7 @@
  
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  before_action :set_comicbook, only: [:new, :index, :show, :edit, ]
+  before_action :set_comicbook, only: [:new, :index, :show, :edit,]
   before_action :set_review, only: [:show, :edit, :destroy]
 
   def new
