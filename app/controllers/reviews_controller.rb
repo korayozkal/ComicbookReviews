@@ -1,7 +1,7 @@
  
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  before_action :set_comicbook, only: [:new, :index, :show, :edit]
+  before_action :set_comicbook, only: [:new, :index, :show, :edit, ]
   before_action :set_review, only: [:show, :edit, :destroy]
 
   def new
@@ -34,17 +34,25 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
-      redirect_to @review
-    else
-      render :edit
-    end
+     if current_user == @review.user
+       
+        if @review.update(review_params)
+           redirect_to @review
+        else
+           render :edit
+        end 
+        else 
+           redirect_to comicbooks_path
+        end 
   end
 
   def destroy
-    @review.destroy
-       redirect_to comicbook_path
-    
+    if current_user == @review.user
+       @review.destroy
+       redirect_to comicbook_path(@review.comicbook)
+    else 
+       redirect_to comicbooks_path
+    end
 end 
 
   private

@@ -33,18 +33,27 @@ class ComicbooksController < ApplicationController
 
   def update 
       
-      if @comicbook.update(comicbook_params)
-         redirect_to comicbook_path(@comicbook)
-      else
-         render :edit
-      end
+    if current_user == @comicbook.user 
+
+        if @comicbook.update(comicbook_params)
+
+            redirect_to comicbook_path(@comicbook)
+        else
+            render :edit
+        end
+    else
+        redirect_to comicbooks_path
+    end
   end 
 
   def destroy
-      @comicbook.destroy#workingcode
-      redirect_to comicbooks_path(@comicbook)#workingcode
+      if current_user == @comicbook.user 
+         @comicbook.destroy
+         redirect_to comicbooks_path
+      else 
+         redirect_to comicbooks_path
+      end 
   end 
-
 
   private
 
