@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
         end 
         else 
            redirect_to comicbooks_path
-        end 
+      end 
   end
 
   def destroy
