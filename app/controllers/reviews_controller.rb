@@ -1,7 +1,7 @@
  
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  before_action :set_comicbook, only: [:new, :index, :show, :edit,]
+  before_action :set_comicbook, only: [:new, :index, :show, :edit, :create]
   before_action :set_review, only: [:show, :edit, :destroy]
 
   def new
@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @comicbook = Comicbook.find(params[:comicbook_id])
+    #@comicbook = Comicbook.find(params[:comicbook_id])
     @review = current_user.reviews.build(review_params)
     @review.comicbook = @comicbook
       if @review.save
@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
   
   
   def show
-    #redirect_to comicbook_reviews_path(@review.comicbook) if !@review.comicbook
   end
 
   def edit
