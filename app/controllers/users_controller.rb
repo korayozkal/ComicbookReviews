@@ -18,16 +18,15 @@ skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
 
     def show
         redirect_if_not_logged_in
-         #@user = User.find(params[:id])
-         @user = User.find_by_id(params[:id]) #this will bring nil
-         redirect_to '/' if !@user   # we are directing to home if it is not a user
+        @user = User.find_by_id(params[:id]) #this will bring nil
+        redirect_to '/' if !@user   # we are directing to home if it is not a user
      end
 
     
 private
 
-def user_params
-    params.require(:user).permit(:username, :email, :password)
-  end
+    def user_params
+        params.require(:user).permit(:username, :email, :password)
+    end
 
 end
