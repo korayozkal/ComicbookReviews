@@ -8,9 +8,9 @@ skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
         #binding.pry
         @user = User.new(user_params)
         if @user.save
-        session[:user_id] = @user.id
+           session[:user_id] = @user.id
         #we are logging in
-        redirect_to @user 
+           redirect_to @user 
         else
           render :new
         end
